@@ -18,6 +18,7 @@
       background: #0d1117;
       color: #c9d1d9;
       line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
     nav {
       background-color: #161b22;
@@ -40,7 +41,7 @@
       color: #1f6feb;
     }
     header {
-     padding: 8rem 2rem 3rem;
+      padding: 8rem 2rem 3rem;
       text-align: center;
       background: url('https://i.postimg.cc/yxrQpGdV/7e5492e1-bce2-48e3-84ce-dd222f7cb6ff.jpg') no-repeat center center;
       background-size: cover;
@@ -84,6 +85,17 @@
       border-radius: 30px;
       color: #c9d1d9;
     }
+    .certifications-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .certifications-list li {
+      background: #21262d;
+      margin: 0.5rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #58a6ff;
+      border-radius: 5px;
+    }
     .button {
       background: #238636;
       color: white;
@@ -116,26 +128,6 @@
     .social-links a:hover {
       transform: scale(1.2);
     }
-    .cert-list {
-      list-style: none;
-      padding: 0;
-    }
-    .cert-list li {
-      background: #30363d;
-      margin: 1rem 0;
-      padding: 1rem;
-      border-radius: 8px;
-      color: #c9d1d9;
-      box-shadow: 0 2px 5px rgba(88, 166, 255, 0.1);
-    }
-    .cert-list li a {
-      color: #58a6ff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    .cert-list li a:hover {
-      color: #1f6feb;
-    }
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -143,15 +135,63 @@
       color: #8b949e;
       font-size: 0.9rem;
     }
+
+    .dark-mode {
+      background-color: #0d1117;
+      color: #c9d1d9;
+    }
+    .light-mode {
+      background-color: #f0f1f6;
+      color: #333;
+    }
+    .light-mode header {
+      background: url('https://i.postimg.cc/yxrQpGdV/7e5492e1-bce2-48e3-84ce-dd222f7cb6ff.jpg') no-repeat center center;
+      background-size: cover;
+    }
+    .light-mode nav {
+      background-color: #f0f1f6;
+      color: #333;
+    }
+    .light-mode nav a {
+      color: #007bff;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: #58a6ff;
+      color: white;
+      padding: 20px 25px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .theme-toggle:hover {
+      background: #1f6feb;
+    }
+
+    @media screen and (max-width: 768px) {
+      header {
+        padding: 6rem 1rem 2rem;
+      }
+      section {
+        padding: 1.5rem;
+      }
+      .social-links a {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="dark-mode">
 
 <nav>
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
+  <a href="#certifications">Certifications</a>
   <a href="#projects">Projects</a>
-  <a href="#certificates">Licenses & Certificates</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -175,11 +215,6 @@
   </ul>
 </section>
 
-<section id="projects">
-  <h2>Projects</h2>
-  <p>Explore my development projects and contributions on <a href="https://github.com/Raam1112" target="_blank">GitHub</a>.</p>
-</section>
-
 <section id="certificates">
   <h2>Licenses & Certificates</h2>
   <ul class="cert-list">
@@ -196,6 +231,11 @@
       <a href="https://www.hackerrank.com/certificates/795d3e04fa97" target="_blank">View Certificate</a>
     </li>
   </ul>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p>Explore my development projects and contributions on <a href="https://github.com/Raam1112" target="_blank">GitHub</a>.</p>
 </section>
 
 <section id="contact">
@@ -216,6 +256,23 @@
 <footer>
   &copy; 2025 Raamnath. Designed with precision and passion.
 </footer>
+
+<button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+
+    if (currentTheme === 'dark') {
+      body.classList.remove('dark-mode');
+      body.classList.add('light-mode');
+    } else {
+      body.classList.remove('light-mode');
+      body.classList.add('dark-mode');
+    }
+  }
+</script>
 
 </body>
 </html>
